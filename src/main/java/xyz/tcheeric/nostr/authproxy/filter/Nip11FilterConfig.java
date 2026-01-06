@@ -111,9 +111,10 @@ public class Nip11FilterConfig {
                         request,
                         String.class);
 
+                String body = upstreamResponse.getBody();
                 response.setContentType("application/nostr+json");
                 response.setStatus(HttpServletResponse.SC_OK);
-                response.getWriter().write(upstreamResponse.getBody());
+                response.getWriter().write(body != null ? body : "{}");
                 response.getWriter().flush();
 
                 log.info("nip11_response_sent");

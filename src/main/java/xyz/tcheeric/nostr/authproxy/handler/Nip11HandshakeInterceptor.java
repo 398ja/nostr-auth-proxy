@@ -83,8 +83,9 @@ public class Nip11HandshakeInterceptor implements HandshakeInterceptor {
                     request,
                     String.class);
 
+            String body = upstreamResponse.getBody();
             response.getHeaders().set("Content-Type", "application/nostr+json");
-            response.getBody().write(upstreamResponse.getBody().getBytes());
+            response.getBody().write(body != null ? body.getBytes() : "{}".getBytes());
             response.getBody().flush();
 
             log.info("nip11_response_sent");
