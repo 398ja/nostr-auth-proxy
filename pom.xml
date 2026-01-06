@@ -8,13 +8,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.5</version>
+        <version>3.5.8</version>
         <relativePath/>
     </parent>
 
     <groupId>xyz.tcheeric</groupId>
     <artifactId>nostr-auth-proxy</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
 
     <name>Nostr Auth Proxy</name>
@@ -26,7 +26,20 @@
         <bcprov-jdk18on.version>1.81</bcprov-jdk18on.version>
         <testcontainers.version>1.20.4</testcontainers.version>
         <awaitility.version>4.3.0</awaitility.version>
+        <!-- Override transitive dependency versions for CVE fixes -->
+        <commons-lang3.version>3.18.0</commons-lang3.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- CVE-2024-25710, CVE-2024-26308: fix in 1.26.0+ -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>1.27.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <distributionManagement>
         <repository>
