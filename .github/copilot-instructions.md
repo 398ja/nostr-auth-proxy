@@ -37,4 +37,4 @@ Key components:
 - `handler/` - WebSocket message handling and upstream routing
 - `upstream/` - Upstream relay client connections
 
-These instructions help Copilot produce code that respects the repository's conventions and protocol requirements.
+These instructions help GitHub Copilot produce code that respects the repository's conventions and protocol requirements.
