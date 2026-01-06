@@ -14,7 +14,7 @@
 
     <groupId>xyz.tcheeric</groupId>
     <artifactId>nostr-auth-proxy</artifactId>
-    <version>1.0.0</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
     <name>Nostr Auth Proxy</name>
@@ -28,17 +28,31 @@
         <awaitility.version>4.3.0</awaitility.version>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>reposilite-releases</id>
+            <url>https://maven.398ja.xyz/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>reposilite-snapshots</id>
+            <url>https://maven.398ja.xyz/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <repositories>
         <repository>
-            <id>398ja-releases</id>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>reposilite-releases</id>
             <url>https://maven.398ja.xyz/releases</url>
         </repository>
         <repository>
-            <id>398ja-snapshots</id>
+            <id>reposilite-snapshots</id>
             <url>https://maven.398ja.xyz/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
         </repository>
     </repositories>
 

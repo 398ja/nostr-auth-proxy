@@ -204,8 +204,11 @@ public class AuthProxyWebSocketHandler extends TextWebSocketHandler {
                     ensureUpstreamConnected(proxySession);
                     proxyToUpstream(proxySession, message);
                 } else if ("REQ".equals(messageType)) {
-                    // REQ requires auth if querying protected kinds
-                    if (reqContainsProtectedKinds(payload)) {
+                    // REQ requires auth if require-auth is enabled or if querying protected kinds
+                    if (properties.isRequireAuth()) {
+                        sendAuthError(proxySession, "auth-required",
+                                "AUTH required for REQ messages");
+                    } else if (reqContainsProtectedKinds(payload)) {
                         sendAuthError(proxySession, "auth-required",
                                 "Authentication required to query protected kinds (DMs, wallet data)");
                     } else {

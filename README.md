@@ -83,6 +83,33 @@ mvn spring-boot:run
 5. On success: `["OK", "<event-id>", true, "authenticated as <pubkey>..."]`
 6. On failure: `["OK", "<event-id>", false, "<error>"]` and connection closes
 
+## Message Authentication Requirements
+
+The proxy enforces authentication based on message type and the `require-auth` setting:
+
+| Message Type | `require-auth=true` | `require-auth=false` |
+|--------------|---------------------|----------------------|
+| **AUTH**     | Allowed (for authentication) | Allowed |
+| **CLOSE**    | Allowed | Allowed |
+| **REQ**      | Requires auth | Allowed, unless querying protected kinds |
+| **EVENT**    | Requires auth | Requires auth |
+| **Other**    | Requires auth | Requires auth |
+
+### Protected Kinds
+
+When `require-auth=false`, REQ messages are still rejected if they query privacy-sensitive event kinds:
+
+- **NIP-04**: kind `4` (Legacy encrypted DMs)
+- **NIP-17**: kinds `14`, `15` (Private direct messages)
+- **NIP-29**: kind `39002` (Group members)
+- **NIP-37**: kinds `10013`, `31234` (Draft events)
+- **NIP-46**: kind `24133` (Nostr Remote Signing/Bunker)
+- **NIP-47**: kinds `23194`, `23195`, `23196`, `23197` (Wallet Connect)
+- **NIP-51**: kinds `10000`, `10050` (Mute list, DM relay preferences)
+- **NIP-59**: kinds `13`, `1059` (Gift Wraps/Seals)
+- **NIP-60**: kinds `7374`, `7375`, `7376`, `17375` (Cashu Wallet)
+- **NIP-61**: kinds `9321`, `10019` (Nutzaps)
+
 ## Access Control
 
 ### OPEN Mode (default)

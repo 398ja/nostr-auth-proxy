@@ -232,11 +232,12 @@ class AuthProxyWebSocketHandlerTest {
     }
 
     /**
-     * Tests that REQ (read) messages are allowed without authentication.
+     * Tests that REQ (read) messages are allowed without authentication when require-auth is disabled.
      */
     @Test
     void shouldAllowReqMessageWithoutAuth() throws Exception {
         // Given
+        properties.setRequireAuth(false);
         Nip42Challenge challenge = new Nip42Challenge(TEST_CHALLENGE, Instant.now().plusSeconds(300));
         ProxySession proxySession = new ProxySession(SESSION_ID, clientSession, challenge);
         WebSocketSession upstreamSession = mock(WebSocketSession.class);
