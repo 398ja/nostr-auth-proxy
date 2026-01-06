@@ -1,0 +1,19 @@
+server:
+  port: 0  # Random port for tests
+
+spring:
+  application:
+    name: nostr-auth-proxy-test
+
+nostr:
+  auth-proxy:
+    upstream-relay: ws://localhost:7778
+    require-auth: true
+    auth-timeout: 5s
+    challenge-expiration: 1m
+    access-mode: OPEN
+    max-connections-per-pubkey: 10
+
+logging:
+  level:
+    xyz.tcheeric.nostr.authproxy: DEBUG

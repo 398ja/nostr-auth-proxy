@@ -1,0 +1,36 @@
+server:
+  port: ${NOSTR_AUTH_PROXY_PORT:7777}
+
+spring:
+  application:
+    name: nostr-auth-proxy
+
+nostr:
+  auth-proxy:
+    upstream-relay: ${NOSTR_AUTH_PROXY_UPSTREAM:ws://localhost:7778}
+    public-relay-url: ${NOSTR_AUTH_PROXY_PUBLIC_URL:}
+    require-auth: ${NOSTR_AUTH_PROXY_REQUIRE_AUTH:true}
+    auth-timeout: ${NOSTR_AUTH_PROXY_AUTH_TIMEOUT:30s}
+    challenge-expiration: ${NOSTR_AUTH_PROXY_CHALLENGE_EXPIRATION:5m}
+    access-mode: ${NOSTR_AUTH_PROXY_ACCESS_MODE:OPEN}
+    allowed-pubkeys: ${NOSTR_AUTH_PROXY_ALLOWED_PUBKEYS:}
+    blocked-pubkeys: ${NOSTR_AUTH_PROXY_BLOCKED_PUBKEYS:}
+    max-connections-per-pubkey: ${NOSTR_AUTH_PROXY_MAX_CONNECTIONS:10}
+    idle-timeout: ${NOSTR_AUTH_PROXY_IDLE_TIMEOUT:30m}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when_authorized
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+logging:
+  level:
+    xyz.tcheeric.nostr.authproxy: ${LOG_LEVEL:INFO}
+    org.springframework.web.socket: ${LOG_LEVEL_WEBSOCKET:WARN}
