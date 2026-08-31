@@ -7,14 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-08-31
+
 ### Fixed
 
+- The `prometheus` actuator endpoint could not be scraped. `application.yml`
+  exposes `health,info,metrics,prometheus`, but `micrometer-registry-prometheus`
+  was not on the classpath, and Spring registers that endpoint only when a
+  Prometheus registry is present. Exposing an endpoint that cannot exist reads
+  as configured monitoring while returning 404 to every scrape.
 - Add null checks for upstream response body in NIP-11 handlers
-- Use system Maven instead of wrapper in CI workflow
 
 ### Changed
 
+- `nostr-java` 1.2.0 -> 1.2.1.
 - Update `actions/setup-java` to v5 in google-java-format workflow
+- Use system Maven instead of wrapper in CI workflow
 
 ### Security
 

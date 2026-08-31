@@ -14,7 +14,7 @@
 
     <groupId>xyz.tcheeric</groupId>
     <artifactId>nostr-auth-proxy</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <packaging>jar</packaging>
 
     <name>Nostr Auth Proxy</name>
