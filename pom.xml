@@ -14,7 +14,7 @@
 
     <groupId>xyz.tcheeric</groupId>
     <artifactId>nostr-auth-proxy</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <packaging>jar</packaging>
 
     <name>Nostr Auth Proxy</name>
@@ -22,7 +22,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <nostr-java.version>1.2.0</nostr-java.version>
+        <nostr-java.version>1.2.1</nostr-java.version>
         <bcprov-jdk18on.version>1.81</bcprov-jdk18on.version>
         <testcontainers.version>1.20.4</testcontainers.version>
         <awaitility.version>4.3.0</awaitility.version>
@@ -111,6 +111,10 @@
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
         <!-- Cryptography for BIP-340 signature verification -->
