@@ -24,7 +24,7 @@
         <java.version>21</java.version>
         <nostr-java.version>1.2.1</nostr-java.version>
         <bcprov-jdk18on.version>1.81</bcprov-jdk18on.version>
-        <testcontainers.version>1.20.4</testcontainers.version>
+        <testcontainers.version>1.21.4</testcontainers.version>
         <awaitility.version>4.3.0</awaitility.version>
         <!-- Override transitive dependency versions for CVE fixes -->
         <commons-lang3.version>3.18.0</commons-lang3.version>
