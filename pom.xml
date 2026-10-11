@@ -197,11 +197,8 @@
                         <image>eclipse-temurin:21-jre</image>
                     </from>
                     <to>
-                        <image>docker.398ja.xyz/nostr-auth-proxy</image>
-                        <tags>
-                            <tag>${project.version}</tag>
-                            <tag>latest</tag>
-                        </tags>
+                        <!-- Release pushes ONLY the version tag. Never :latest (staging pulls it). -->
+                        <image>docker.398ja.xyz/nostr-auth-proxy:${project.version}</image>
                     </to>
                     <container>
                         <ports>
